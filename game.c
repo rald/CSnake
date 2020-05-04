@@ -9,7 +9,7 @@
 
 #include "uvcoord_sprites.h"
 
-#define GAME_TITLE "CSnakeGB" 
+#define GAME_TITLE "CSnake" 
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
