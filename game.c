@@ -38,8 +38,8 @@ Point display[SNAKES_MAX];
 
 
 void newFood() {
-	food.x=rand()%16;
-	food.y=rand()%16;
+	food.x=rand()%WORLD_WIDTH;
+	food.y=rand()%WORLD_HEIGHT;
 }
 
 int cmp(const void *a,const void *b) {
@@ -110,8 +110,8 @@ int main(int argc, char *argv[]) {
     glClearColor( 0xCA/255.0f, 0xDC/255.0f, 0x9F/255.0f, 0xFF/255.0f );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
-		for(j=0;j<16;j++) {
-			for(i=0;i<16;i++) {
+		for(j=0;j<WORLD_HEIGHT;j++) {
+			for(i=0;i<WORLD_WIDTH;i++) {
 				x=(i-j)*16+cx;
 				y=(i+j)*8+cy;
 				glSprite(x,y,GL2D_FLIP_NONE,&sprites_image[0]);
@@ -147,10 +147,10 @@ int main(int argc, char *argv[]) {
 			snake.x+=xi;
 			snake.y+=yi;
 
-			if(snake.x<0) snake.x=15;
-			if(snake.y<0) snake.y=15;
-			if(snake.x>15) snake.x=0;
-			if(snake.y>15) snake.y=0;
+			if(snake.x<0) snake.x=WORLD_WIDTH-1;
+			if(snake.y<0) snake.y=WORLD_HEIGHT-1;
+			if(snake.x>WORLD_WIDTH-1) snake.x=0;
+			if(snake.y>WORLD_HEIGHT-1) snake.y=0;
 
 			if(snake.x==food.x && snake.y==food.y) {
 				if(snakesLen<SNAKES_MAX-1) {
